@@ -1,6 +1,16 @@
 <?php
 
-$db = new mysqli("localhost","root", "","zoounivo");
-if (!$db) {
-    return false;
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=veterinaria", $username, $password);
+
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  echo "Connected successfully";
+  
+} catch(PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
 }
